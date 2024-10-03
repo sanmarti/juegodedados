@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego de Dados - Casino</title>
+    <title> DICE QUIDDITCH MATCH</title>
     <link rel="stylesheet" href="styles.css"> <!-- Vincula el archivo de CSS -->
 </head>
 <body>
     <div class="container">
-        <h1>🎲 Juego de Dados 🎲</h1>
-        
+        <h1>DICE QUIDDITCH MATCH</h1>
+
         <!-- Imágenes de personajes de anime -->
         <div class="imagenes-anime">
             <img src="QuidditchWallpaper.png" alt="Personaje Anime 1" class="imagen-anime">
@@ -25,13 +25,13 @@
         </div>
 
         <!-- Botón para lanzar los dados -->
-        <button id="lanzarDados">Lanzar Dados</button>
-        
+        <button id="lanzarDados" class="btn-lanzar">Lanzar Dados</button>
+
         <!-- Mostrar puntuación -->
         <div id="resultado">
-            <p>Puntuación Total: <span id="puntuacion">0</span></p>
+            <p>Puntuación Total Jugador: <span id="puntuacion">0</span></p>
         </div>
-        
+
         <!-- Historial de tiradas -->
         <div id="historial">
             <h2>Historial de Tiradas</h2>
@@ -39,11 +39,19 @@
         </div>
     </div>
 
+    <!-- Popup de final de partida -->
+    <div id="popup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <h2>Fin de la Partida</h2>
+            <p>Puntuación Total Jugador: <span id="puntuacionJugador"></span></p>
+            <p>Puntuación Total Computadora: <span id="puntuacionComputadora"></span></p>
+            <p id="resultadoFinal"></p>
+            <button id="jugarOtraPartida" class="btn-jugar-otra">Jugar otra Partida</button>
+        </div>
+    </div>
+
     <!-- Vincula el archivo de JavaScript -->
     <script src="script.js"></script>
 </body>
-
-
 </html>
-
 
