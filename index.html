@@ -110,23 +110,36 @@
         </div>
     </div>
 
-    <!-- Popup de final de partida -->
-    <div id="popup" class="popup" style="display: none;">
-        <div class="popup-content">
-            <h2>Fin de la Partida</h2>
-            <p>Puntuación Total Jugador: <span id="puntuacionJugador"></span></p>
-            <p>Puntuación Total Computadora: <span id="puntuacionComputadora"></span></p>
-            <p id="resultadoFinal"></p>
-            <button id="jugarOtraPartida" class="btn-jugar-otra">Jugar otra Partida</button>
+<!-- Popup de final de partida -->
+<div id="popup" class="popup" style="display: none;">
+    <div class="popup-content">
+        <h2>Fin de la Partida</h2>
+        <p>Puntuación Total Jugador: <span id="puntuacionJugador"></span></p>
+        <p>Puntuación Total Computadora: <span id="puntuacionComputadora"></span></p>
+        <p id="resultadoFinal"></p>
+
+        <!-- Mostrar las tiradas y sus puntos -->
+        <h3>Tiradas</h3>
+        <p><strong>Jugador:</strong> <span id="tiradasJugador"></span></p>
+        <p><strong>Computadora:</strong> <span id="tiradasComputadora"></span></p>
+
+        <!-- Historial de la partida -->
+        <h3>Historial de la Partida</h3>
+        <div id="historialPartida">
+            <p><strong>Tiradas Jugador:</strong> <span id="historicoJugador"></span></p>
+            <p><strong>Tiradas Computadora:</strong> <span id="historicoComputadora"></span></p>
         </div>
+
+        <button id="jugarOtraPartida" class="btn-jugar-otra">Jugar otra Partida</button>
     </div>
+</div>
 
     <!-- Vincula el archivo de JavaScript -->
     <script src="script.js"></script>
 </body>
     <body>
     <div class="container">
-        <h1>🎲 DADOS QUIDDITCH 🎲</h1>
+        <h1>🎲 NORMAS DEL JUEGO 🎲</h1>
 
         <!-- Sección de reglas de puntuación -->
         <div class="reglas">
