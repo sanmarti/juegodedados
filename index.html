@@ -3,8 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> DADOS QUIDDITCH </title>
+    <title>DADOS QUIDDITCH</title>
     <link rel="stylesheet" href="styles.css"> <!-- Vincula el archivo de CSS -->
+    <style>
+        /* Estilos adicionales para hacer la imagen más grande y responsive */
+        .imagenes-anime {
+            width: 100%; /* Ajusta el ancho al 100% */
+            display: flex; /* Usar flexbox para centrar la imagen */
+            justify-content: center; /* Centra la imagen horizontalmente */
+            margin-bottom: 20px; /* Espacio debajo de la imagen */
+        }
+
+        .imagen-anime {
+            width: 100%; /* Ajusta el ancho al 100% de su contenedor */
+            max-width: 1200px; /* Ancho máximo para pantallas grandes */
+            height: auto; /* Mantiene la proporción de la imagen */
+            border-radius: 15px; /* Opción para redondear los bordes */
+            display: block; /* Hace que el contenedor se comporte como un bloque */
+        }
+
+        /* Estilos para el contenedor principal */
+        .container {
+            text-align: center; /* Centra el contenido */
+            padding: 20px; /* Añade espacio alrededor del contenido */
+            background-color: #f8f9fa; /* Color de fondo */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para el contenedor */
+        }
+
+        /* Estilo del popup */
+        .popup {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* Botones */
+        .btn-lanzar, .btn-jugar-otra {
+            padding: 15px 30px; /* Tamaño del botón */
+            font-size: 20px; /* Tamaño de fuente */
+            background-color: #4CAF50; /* Color del botón */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px; /* Margen superior */
+        }
+
+        .btn-lanzar:hover {
+            background-color: #45a049; /* Cambio de color al pasar el ratón */
+        }
+
+        .btn-jugar-otra {
+            background-color: #007BFF; /* Color del botón */
+        }
+
+        .btn-jugar-otra:hover {
+            background-color: #0056b3; /* Cambio de color al pasar el ratón */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
