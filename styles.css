@@ -1,57 +1,32 @@
-/* Diseño básico */
-#historial {
-    margin-top: 20px;
-    font-size: 1.2rem;
-    background-color: #e7f3fe;
-    border: 1px solid #2196F3;
-    border-radius: 5px;
-    padding: 10px;
-}
-
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    background-color: #2e7d32; /* Verde oscuro como fondo de casino */
+    color: #fff; /* Texto blanco */
+    font-family: 'Arial', sans-serif;
+    text-align: center;
 }
 
 .container {
-    text-align: center;
-    background-color: #fff;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
+    background-color: #1b5e20; /* Fondo del contenedor */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
 }
 
 .dado {
-    font-size: 3rem;
     display: inline-block;
-    margin: 0 10px;
-    padding: 20px;
-    background-color: #e1e1e1;
-    border: 2px solid #333;
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    background-color: #ffeb3b; /* Color de los dados */
     border-radius: 10px;
-}
-
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-#resultado {
-    margin-top: 20px;
-    font-size: 1.5rem;
-}
+    font-size: 2rem;
+    line-height: 60px;
+    color: #000; /* Texto negro */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3
