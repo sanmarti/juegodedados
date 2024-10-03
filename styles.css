@@ -101,6 +101,7 @@ h1 {
     background-color: #2e582d; /* Color oscuro Slytherin al pasar el mouse */
 }
 
+/* Estilos para las imágenes de anime */
 .imagenes-anime {
     margin: 20px 0; /* Espacio alrededor de las imágenes */
 }
@@ -113,6 +114,7 @@ h1 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra de las imágenes */
 }
 
+/* Estilos del pop-up */
 .popup {
     display: none; /* Oculto por defecto */
     position: fixed; /* Mantiene el pop-up en la misma posición en la ventana */
@@ -135,6 +137,22 @@ h1 {
     max-width: 500px; /* Ancho máximo del pop-up */
 }
 
+#jugarOtraPartida {
+    padding: 20px 50px; /* Botón más grande */
+    font-size: 2rem; /* Tamaño del texto del botón */
+    background-color: #4CAF50; /* Color verde */
+    color: white;
+    border: none;
+    border-radius: 10px; /* Bordes redondeados */
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#jugarOtraPartida:hover {
+    background-color: #45a049; /* Color más oscuro al pasar el mouse */
+}
+
+/* Botón de cerrar en el pop-up */
 .close {
     color: #aaa; /* Color del botón de cerrar */
     float: right; /* Flota a la derecha */
@@ -148,10 +166,3 @@ h1 {
     text-decoration: none; /* Sin subrayado */
     cursor: pointer; /* Cambia el cursor */
 }
-
-#jugarOtraPartida {
-    padding: 15px 30px; /* Tamaño del botón */
-    font-size: 1.5rem; /* Tamaño del texto del botón */
-    margin-top: 20px; /* Espacio superior */
-}
-
