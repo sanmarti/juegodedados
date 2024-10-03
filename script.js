@@ -1,33 +1,40 @@
 let totalPuntuacionJugador = 0;
 let totalPuntuacionComputadora = 0;
-let tiradasJugador = []; // Array para guardar las puntuaciones del jugador
-let tiradasComputadora = []; // Array para guardar las puntuaciones de la computadora
-let tiradasRestantes = 3; // Contador de tiradas restantes
+let tiradasJugador = [];
+let tiradasComputadora = [];
+let tiradasRestantes = 3;
 
 // Añadir evento al botón de lanzar dados
 document.getElementById("lanzarDados").addEventListener("click", lanzarDados);
 
-// Función que se ejecuta cuando se lanzan los dados
+// Función que se ejecuta cuando el juego comienza
+function iniciarJuego() {
+    // Primero, la computadora hace sus tiradas
+    for (let i = 0; i < 3; i++) {
+        let dadosComputadora = tirarDados();
+        let puntuacionComputadora = calcularPuntuacion(dadosComputadora);
+        totalPuntuacionComputadora += puntuacionComputadora;
+        tiradasComputadora.push(puntuacionComputadora);
+    }
+
+    // Mostrar el resultado de la computadora (puedes agregar efectos si prefieres no mostrarlo inmediatamente)
+    console.log(`Puntuación Computadora: ${totalPuntuacionComputadora}`);
+    tiradasRestantes = 3; // Resetear las tiradas para el jugador
+}
+
+// Función que se ejecuta cuando el jugador lanza los dados
 function lanzarDados() {
-    // Solo permite hasta 3 tiradas
     if (tiradasRestantes <= 0) {
-        alert("Ya has realizado 3 tiradas. Haz clic en 'Jugar otra partida' para empezar de nuevo.");
         return;
     }
 
     // Jugador tira los dados
     let dadosJugador = tirarDados();
     let puntuacionJugador = calcularPuntuacion(dadosJugador);
-    totalPuntuacionJugador += puntuacionJugador; // Suma la puntuación total del jugador
-    tiradasJugador.push(puntuacionJugador); // Guarda la puntuación de la tirada actual del jugador
+    totalPuntuacionJugador += puntuacionJugador;
+    tiradasJugador.push(puntuacionJugador);
 
-    // Computadora tira los dados
-    let dadosComputadora = tirarDados();
-    let puntuacionComputadora = calcularPuntuacion(dadosComputadora);
-    totalPuntuacionComputadora += puntuacionComputadora; // Suma la puntuación total de la computadora
-    tiradasComputadora.push(puntuacionComputadora); // Guarda la puntuación de la tirada actual de la computadora
-
-    tiradasRestantes--; // Reduce el contador de tiradas restantes
+    tiradasRestantes--;
 
     // Actualiza la visualización de los dados del jugador
     for (let i = 0; i < 5; i++) {
@@ -35,9 +42,9 @@ function lanzarDados() {
     }
 
     // Actualiza el resultado en la interfaz
-    document.getElementById("puntuacion").innerText = `Jugador: ${totalPuntuacionJugador} puntos`;
+    document.getElementById("puntuacion").innerText = totalPuntuacionJugador;
 
-    // Si ya se han realizado 3 tiradas, muestra el popup
+    // Si ya se han realizado las 3 tiradas del jugador, muestra el popup
     if (tiradasRestantes <= 0) {
         mostrarPopup();
     }
@@ -86,32 +93,25 @@ function calcularPuntuacion(dados) {
 
 // Función para mostrar el popup al finalizar las tiradas
 function mostrarPopup() {
-    const popup = document.createElement("div");
-    popup.id = "popup";
+    const popup = document.getElementById("popup");
     let resultadoFinal = "";
+    let diferenciaPuntos = Math.abs(totalPuntuacionJugador - totalPuntuacionComputadora);
 
-    // Determina el ganador
+    // Determina el ganador y muestra por cuántos puntos
     if (totalPuntuacionJugador > totalPuntuacionComputadora) {
-        resultadoFinal = "¡Has ganado!";
+        resultadoFinal = `¡Has ganado por ${diferenciaPuntos} puntos!`;
     } else if (totalPuntuacionJugador < totalPuntuacionComputadora) {
-        resultadoFinal = "La computadora ha ganado.";
+        resultadoFinal = `La computadora ha ganado por ${diferenciaPuntos} puntos.`;
     } else {
         resultadoFinal = "¡Es un empate!";
     }
 
-    popup.innerHTML = `
-        <div class="popup-content">
-            <h2>Fin de la Partida</h2>
-            <p>Puntuación Total Jugador: ${totalPuntuacionJugador} puntos</p>
-            <p>Puntuación Total Computadora: ${totalPuntuacionComputadora} puntos</p>
-            <p>${resultadoFinal}</p>
-            <button id="jugarOtraPartida">Jugar otra Partida</button>
-        </div>
-    `;
-    document.body.appendChild(popup);
+    // Muestra el resultado en el popup
+    document.getElementById("puntuacionJugador").innerText = totalPuntuacionJugador;
+    document.getElementById("puntuacionComputadora").innerText = totalPuntuacionComputadora;
+    document.getElementById("resultadoFinal").innerText = resultadoFinal;
 
-    // Añadir evento al botón para reiniciar el juego
-    document.getElementById("jugarOtraPartida").addEventListener("click", reiniciarJuego);
+    popup.style.display = "block"; // Muestra el popup
 }
 
 // Función para reiniciar el juego
@@ -120,8 +120,9 @@ function reiniciarJuego() {
     totalPuntuacionComputadora = 0;
     tiradasJugador = [];
     tiradasComputadora = [];
-    tiradasRestantes = 3; // Reinicia el contador de tiradas restantes
-    document.getElementById("puntuacion").innerText = `Jugador: ${totalPuntuacionJugador} puntos`;
+    tiradasRestantes = 3;
+
+    document.getElementById("puntuacion").innerText = totalPuntuacionJugador;
 
     // Limpia los dados
     for (let i = 1; i <= 5; i++) {
@@ -132,7 +133,10 @@ function reiniciarJuego() {
     actualizarHistorial();
 
     // Cierra el popup
-    document.getElementById("popup").remove();
+    document.getElementById("popup").style.display = "none";
+
+    // Inicia el juego nuevamente, la computadora juega primero
+    iniciarJuego();
 }
 
 // Función para actualizar el historial de tiradas
@@ -156,3 +160,9 @@ function actualizarHistorial() {
     historialElement.innerHTML += `<p>Total Jugador: ${totalPuntuacionJugador} puntos</p>`;
     historialElement.innerHTML += `<p>Total Computadora: ${totalPuntuacionComputadora} puntos</p>`;
 }
+
+// Inicializar el juego (la computadora juega primero)
+iniciarJuego();
+
+// Añadir evento al botón "Jugar otra Partida" para reiniciar el juego
+document.getElementById("jugarOtraPartida").addEventListener("click", reiniciarJuego);
