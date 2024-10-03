@@ -1,7 +1,7 @@
-
-// Inicializa las variables
-let totalPuntuacion = 0;
-let tiradas = []; // Array para guardar las puntuaciones de cada tirada
+let totalPuntuacionJugador = 0;
+let totalPuntuacionComputadora = 0;
+let tiradasJugador = []; // Array para guardar las puntuaciones del jugador
+let tiradasComputadora = []; // Array para guardar las puntuaciones de la computadora
 let tiradasRestantes = 3; // Contador de tiradas restantes
 
 // Añadir evento al botón de lanzar dados
@@ -15,22 +15,27 @@ function lanzarDados() {
         return;
     }
 
-    let dados = [];
-    for (let i = 0; i < 5; i++) {
-        // Genera números aleatorios entre 1 y 6
-        dados[i] = Math.floor(Math.random() * 6) + 1;
-        // Actualiza la visualización de cada dado
-        document.getElementById(`dado${i + 1}`).innerText = dados[i];
-    }
+    // Jugador tira los dados
+    let dadosJugador = tirarDados();
+    let puntuacionJugador = calcularPuntuacion(dadosJugador);
+    totalPuntuacionJugador += puntuacionJugador; // Suma la puntuación total del jugador
+    tiradasJugador.push(puntuacionJugador); // Guarda la puntuación de la tirada actual del jugador
 
-    // Calcula la puntuación y la muestra
-    let puntuacion = calcularPuntuacion(dados);
-    totalPuntuacion += puntuacion; // Suma la puntuación total
-    tiradas.push(puntuacion); // Guarda la puntuación de la tirada actual
+    // Computadora tira los dados
+    let dadosComputadora = tirarDados();
+    let puntuacionComputadora = calcularPuntuacion(dadosComputadora);
+    totalPuntuacionComputadora += puntuacionComputadora; // Suma la puntuación total de la computadora
+    tiradasComputadora.push(puntuacionComputadora); // Guarda la puntuación de la tirada actual de la computadora
+
     tiradasRestantes--; // Reduce el contador de tiradas restantes
 
+    // Actualiza la visualización de los dados del jugador
+    for (let i = 0; i < 5; i++) {
+        document.getElementById(`dado${i + 1}`).innerText = dadosJugador[i];
+    }
+
     // Actualiza el resultado en la interfaz
-    document.getElementById("puntuacion").innerText = totalPuntuacion;
+    document.getElementById("puntuacion").innerText = `Jugador: ${totalPuntuacionJugador} puntos`;
 
     // Si ya se han realizado 3 tiradas, muestra el popup
     if (tiradasRestantes <= 0) {
@@ -38,6 +43,15 @@ function lanzarDados() {
     }
 
     actualizarHistorial();
+}
+
+// Función para tirar los dados
+function tirarDados() {
+    let dados = [];
+    for (let i = 0; i < 5; i++) {
+        dados[i] = Math.floor(Math.random() * 6) + 1; // Genera números aleatorios entre 1 y 6
+    }
+    return dados;
 }
 
 // Función para calcular la puntuación según los dados lanzados
@@ -74,10 +88,23 @@ function calcularPuntuacion(dados) {
 function mostrarPopup() {
     const popup = document.createElement("div");
     popup.id = "popup";
+    let resultadoFinal = "";
+
+    // Determina el ganador
+    if (totalPuntuacionJugador > totalPuntuacionComputadora) {
+        resultadoFinal = "¡Has ganado!";
+    } else if (totalPuntuacionJugador < totalPuntuacionComputadora) {
+        resultadoFinal = "La computadora ha ganado.";
+    } else {
+        resultadoFinal = "¡Es un empate!";
+    }
+
     popup.innerHTML = `
         <div class="popup-content">
             <h2>Fin de la Partida</h2>
-            <p>Puntuación Total: ${totalPuntuacion} puntos</p>
+            <p>Puntuación Total Jugador: ${totalPuntuacionJugador} puntos</p>
+            <p>Puntuación Total Computadora: ${totalPuntuacionComputadora} puntos</p>
+            <p>${resultadoFinal}</p>
             <button id="jugarOtraPartida">Jugar otra Partida</button>
         </div>
     `;
@@ -89,10 +116,12 @@ function mostrarPopup() {
 
 // Función para reiniciar el juego
 function reiniciarJuego() {
-    totalPuntuacion = 0;
-    tiradas = [];
+    totalPuntuacionJugador = 0;
+    totalPuntuacionComputadora = 0;
+    tiradasJugador = [];
+    tiradasComputadora = [];
     tiradasRestantes = 3; // Reinicia el contador de tiradas restantes
-    document.getElementById("puntuacion").innerText = totalPuntuacion;
+    document.getElementById("puntuacion").innerText = `Jugador: ${totalPuntuacionJugador} puntos`;
 
     // Limpia los dados
     for (let i = 1; i <= 5; i++) {
@@ -111,12 +140,19 @@ function actualizarHistorial() {
     const historialElement = document.getElementById("historial");
     historialElement.innerHTML = ""; // Limpia el historial actual
 
-    // Muestra las puntuaciones de las tiradas anteriores
-    tiradas.forEach((puntuacion, index) => {
+    // Muestra las puntuaciones de las tiradas anteriores del jugador
+    historialElement.innerHTML += "<h3>Jugador:</h3>";
+    tiradasJugador.forEach((puntuacion, index) => {
+        historialElement.innerHTML += `<p>Tirada ${index + 1}: ${puntuacion} puntos</p>`;
+    });
+
+    // Muestra las puntuaciones de las tiradas anteriores de la computadora
+    historialElement.innerHTML += "<h3>Computadora:</h3>";
+    tiradasComputadora.forEach((puntuacion, index) => {
         historialElement.innerHTML += `<p>Tirada ${index + 1}: ${puntuacion} puntos</p>`;
     });
 
     // Muestra el total de puntos acumulados
-    historialElement.innerHTML += `<p>Total Acumulado: ${totalPuntuacion} puntos</p>`;
+    historialElement.innerHTML += `<p>Total Jugador: ${totalPuntuacionJugador} puntos</p>`;
+    historialElement.innerHTML += `<p>Total Computadora: ${totalPuntuacionComputadora} puntos</p>`;
 }
-
