@@ -1,6 +1,7 @@
 // Inicializa las variables
 let totalPuntuacion = 0;
 let tiradas = []; // Array para guardar las puntuaciones de cada tirada
+let tiradasRestantes = 3; // Contador de tiradas restantes
 
 // Añadir evento al botón de lanzar dados
 document.getElementById("lanzarDados").addEventListener("click", lanzarDados);
@@ -8,8 +9,8 @@ document.getElementById("lanzarDados").addEventListener("click", lanzarDados);
 // Función que se ejecuta cuando se lanzan los dados
 function lanzarDados() {
     // Solo permite hasta 3 tiradas
-    if (tiradas.length >= 3) {
-        alert("Ya has realizado 3 tiradas. Reinicia el juego para empezar de nuevo.");
+    if (tiradasRestantes <= 0) {
+        alert("Ya has realizado 3 tiradas. Haz clic en 'Jugar otra partida' para empezar de nuevo.");
         return;
     }
 
@@ -25,9 +26,16 @@ function lanzarDados() {
     let puntuacion = calcularPuntuacion(dados);
     totalPuntuacion += puntuacion; // Suma la puntuación total
     tiradas.push(puntuacion); // Guarda la puntuación de la tirada actual
+    tiradasRestantes--; // Reduce el contador de tiradas restantes
 
     // Actualiza el resultado en la interfaz
     document.getElementById("puntuacion").innerText = totalPuntuacion;
+
+    // Si ya se han realizado 3 tiradas, muestra el popup
+    if (tiradasRestantes <= 0) {
+        mostrarPopup();
+    }
+
     actualizarHistorial();
 }
 
@@ -59,6 +67,42 @@ function calcularPuntuacion(dados) {
     }
 
     return puntos;
+}
+
+// Función para mostrar el popup al finalizar las tiradas
+function mostrarPopup() {
+    const popup = document.createElement("div");
+    popup.id = "popup";
+    popup.innerHTML = `
+        <div class="popup-content">
+            <h2>Fin de la Partida</h2>
+            <p>Puntuación Total: ${totalPuntuacion} puntos</p>
+            <button id="jugarOtraPartida">Jugar otra Partida</button>
+        </div>
+    `;
+    document.body.appendChild(popup);
+
+    // Añadir evento al botón para reiniciar el juego
+    document.getElementById("jugarOtraPartida").addEventListener("click", reiniciarJuego);
+}
+
+// Función para reiniciar el juego
+function reiniciarJuego() {
+    totalPuntuacion = 0;
+    tiradas = [];
+    tiradasRestantes = 3; // Reinicia el contador de tiradas restantes
+    document.getElementById("puntuacion").innerText = totalPuntuacion;
+
+    // Limpia los dados
+    for (let i = 1; i <= 5; i++) {
+        document.getElementById(`dado${i}`).innerText = 0;
+    }
+
+    // Limpia el historial
+    actualizarHistorial();
+
+    // Cierra el popup
+    document.getElementById("popup").remove();
 }
 
 // Función para actualizar el historial de tiradas
