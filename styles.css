@@ -1,4 +1,13 @@
 /* Diseño básico */
+#historial {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    background-color: #e7f3fe;
+    border: 1px solid #2196F3;
+    border-radius: 5px;
+    padding: 10px;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
