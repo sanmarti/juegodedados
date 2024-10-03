@@ -5,6 +5,18 @@ body {
     text-align: center;
 }
 
+
+/* Estilo para la imagen de anime */
+.imagen-anime {
+    width: 100%; /* Ajusta el ancho al 100% de su contenedor */
+    max-width: 1200px; /* Ancho máximo para pantallas grandes */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin: 0 auto; /* Centra la imagen en su contenedor */
+    display: block; /* Hace que el contenedor se comporte como un bloque */
+    border-radius: 15px; /* Opción para redondear los bordes */
+}
+
+
 .container {
     max-width: 800px;
     margin: 0 auto;
