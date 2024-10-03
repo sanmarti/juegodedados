@@ -7,7 +7,7 @@ body {
 
 
 /* Estilo para la imagen de anime */
-.imagen-anime {
+.imagenes-anime {
     width: 100%; /* Ajusta el ancho al 100% de su contenedor */
     max-width: 1200px; /* Ancho máximo para pantallas grandes */
     height: auto; /* Mantiene la proporción de la imagen */
