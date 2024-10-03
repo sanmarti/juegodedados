@@ -29,4 +29,32 @@ h1 {
     font-size: 2rem;
     line-height: 60px;
     color: #000; /* Texto negro */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#lanzarDados {
+    padding: 15px 30px; /* Aumenta el tamaño del botón */
+    font-size: 1.5rem; /* Tamaño del texto del botón */
+    background-color: #ff5722; /* Color del botón */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+#lanzarDados:hover {
+    background-color: #e64a19; /* Color del botón al pasar el mouse */
+}
+
+.imagenes-anime {
+    margin: 20px 0; /* Espacio alrededor de las imágenes */
+}
+
+.imagen-anime {
+    width: 100px; /* Ancho de las imágenes */
+    height: auto; /* Mantiene la relación de aspecto */
+    margin: 0 10px; /* Espacio entre las imágenes */
+    border-radius: 10px; /* Esquinas redondeadas para las imágenes */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra de las imágenes */
+}
