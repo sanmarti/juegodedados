@@ -1,6 +1,6 @@
 body {
-    background-color: #2e7d32; /* Verde oscuro como fondo de casino */
-    color: #fff; /* Texto blanco */
+    background-color: #f4f4f4; /* Fondo claro para contraste */
+    color: #333; /* Texto oscuro */
     font-family: 'Arial', sans-serif;
     text-align: center;
 }
@@ -9,7 +9,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #1b5e20; /* Fondo del contenedor */
+    background-color: #ffffff; /* Fondo blanco para el contenedor */
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
@@ -21,21 +21,21 @@ h1 {
 
 .dado {
     display: inline-block;
-    width: 60px;
-    height: 60px;
+    width: 80px; /* Aumenta el tamaño del dado */
+    height: 80px;
     margin: 10px;
     background-color: #ffeb3b; /* Color de los dados */
     border-radius: 10px;
-    font-size: 2rem;
-    line-height: 60px;
+    font-size: 2.5rem; /* Aumenta el tamaño de la fuente */
+    line-height: 80px; /* Centra el texto verticalmente */
     color: #000; /* Texto negro */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 #lanzarDados {
-    padding: 15px 30px; /* Aumenta el tamaño del botón */
-    font-size: 1.5rem; /* Tamaño del texto del botón */
-    background-color: #ff5722; /* Color del botón */
+    padding: 20px 50px; /* Aumenta el tamaño del botón */
+    font-size: 2rem; /* Tamaño del texto del botón */
+    background-color: #a500b5; /* Color Gryffindor (Rojo) */
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -44,7 +44,61 @@ h1 {
 }
 
 #lanzarDados:hover {
-    background-color: #e64a19; /* Color del botón al pasar el mouse */
+    background-color: #900000; /* Color oscuro Gryffindor al pasar el mouse */
+}
+
+#resultado {
+    margin-top: 20px;
+}
+
+#historial {
+    margin-top: 30px;
+    padding: 10px;
+    background-color: #e0e0e0; /* Fondo gris claro para el historial */
+    border-radius: 10px;
+}
+
+/* Estilos para los botones de otras casas */
+.button-hufflepuff {
+    background-color: #f0ad4e; /* Color Hufflepuff (Amarillo) */
+    padding: 20px 50px; /* Tamaño del botón */
+    font-size: 2rem; /* Tamaño del texto del botón */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-hufflepuff:hover {
+    background-color: #c3a206; /* Color oscuro Hufflepuff al pasar el mouse */
+}
+
+.button-ravenclaw {
+    background-color: #003b5c; /* Color Ravenclaw (Azul) */
+    padding: 20px 50px; /* Tamaño del botón */
+    font-size: 2rem; /* Tamaño del texto del botón */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-ravenclaw:hover {
+    background-color: #00274d; /* Color oscuro Ravenclaw al pasar el mouse */
+}
+
+.button-slytherin {
+    background-color: #3a6b3a; /* Color Slytherin (Verde) */
+    padding: 20px 50px; /* Tamaño del botón */
+    font-size: 2rem; /* Tamaño del texto del botón */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-slytherin:hover {
+    background-color: #2e582d; /* Color oscuro Slytherin al pasar el mouse */
 }
 
 .imagenes-anime {
@@ -58,3 +112,4 @@ h1 {
     border-radius: 10px; /* Esquinas redondeadas para las imágenes */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra de las imágenes */
 }
+
